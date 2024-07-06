@@ -1,29 +1,30 @@
 import React, {ReactElement} from 'react';
-
 import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
+import SplashScreen from '../screens/Splash';
+import Colors from '../theme/colors';
 
 const Root = createNativeStackNavigator();
 
 function RootNavigator(): ReactElement {
-  const defaultHeaderOptions = {};
+  const defaultHeaderOptions = {
+    headerStyle: {
+      backgroundColor: Colors.WHITE,
+    },
+    headerTintColor: Colors.WHITE,
+  };
 
   return (
     <Root.Navigator
       screenOptions={{
         ...defaultHeaderOptions,
       }}
-      initialRouteName="HomeScreen">
+      initialRouteName="SplashScreen">
       <Root.Screen
         options={{headerShown: false}}
-        name="HomeScreen"
-        getComponent={() => require('../screens/Home').default}
-      />
-      <Root.Screen
-        options={{title: 'Detail Screen'}}
-        name="DetailScreen"
-        getComponent={() => require('../screens/Detail').default}
+        name="SplashScreen"
+        component={SplashScreen}
       />
     </Root.Navigator>
   );

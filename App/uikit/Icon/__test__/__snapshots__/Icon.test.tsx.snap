@@ -7,7 +7,7 @@ exports[`Icon component test Icon snapshot test should render correctly 1`] = `
     {
       "busy": undefined,
       "checked": undefined,
-      "disabled": true,
+      "disabled": false,
       "expanded": undefined,
       "selected": undefined,
     }
@@ -22,7 +22,7 @@ exports[`Icon component test Icon snapshot test should render correctly 1`] = `
   }
   accessible={true}
   collapsable={false}
-  focusable={false}
+  focusable={true}
   hitSlop={
     {
       "bottom": 15,

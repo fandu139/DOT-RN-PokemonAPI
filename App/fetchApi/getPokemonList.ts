@@ -1,4 +1,3 @@
-// import 'server-only'
 import fetchActionAPI from '.';
 
 const getUserReferralAll = async ({

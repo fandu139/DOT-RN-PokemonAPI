@@ -2,7 +2,7 @@ import React, {ReactElement} from 'react';
 import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import SplashScreen from '../screens/Splash';
+import HomeScreen from '../screens/Home';
 import Colors from '../theme/colors';
 
 const Root = createNativeStackNavigator();
@@ -20,11 +20,11 @@ function RootNavigator(): ReactElement {
       screenOptions={{
         ...defaultHeaderOptions,
       }}
-      initialRouteName="SplashScreen">
+      initialRouteName="HomeScreen">
       <Root.Screen
         options={{headerShown: false}}
-        name="SplashScreen"
-        component={SplashScreen}
+        name="HomeScreen"
+        component={HomeScreen}
       />
     </Root.Navigator>
   );

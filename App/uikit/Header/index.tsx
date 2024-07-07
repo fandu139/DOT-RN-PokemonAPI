@@ -110,19 +110,4 @@ const styles = StyleSheet.create({
   },
 });
 
-Header.defaultProps = {
-  leftButton: undefined,
-  leftContent: undefined,
-  subtitle: undefined,
-  rightButton: undefined,
-  testIDTitle: 'header-text-title',
-  testIDSubtitle: 'header-text-subtitle',
-  accessibilityLabelTitle: undefined,
-  accessibilityLabelSubtitle: undefined,
-  titleSelectable: false,
-  subtitleSelectable: false,
-  titleStyle: {},
-  headerContainerStyle: {},
-};
-
 export default Header;

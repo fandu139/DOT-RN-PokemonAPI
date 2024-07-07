@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {FlatList, RefreshControl, StyleSheet} from 'react-native';
+import {FlatList, RefreshControl, StyleSheet, View} from 'react-native';
 
 import {useRecoilState} from 'recoil';
 
@@ -74,7 +74,7 @@ const OrderListHome = () => {
   }, [isLoadingAppendData]);
 
   const showDataEmpty = useCallback(() => {
-    return <Text>Data tidak di temukan</Text>;
+    return <View style={styles.containerDataEmpty}><Text>Data tidak di temukan</Text></View>;
   }, []);
 
   return (
@@ -105,6 +105,9 @@ const styles = StyleSheet.create({
   spinnerContainer: {
     marginVertical: 20,
   },
+  containerDataEmpty: {
+    ...AppStyles.fillCenterContent,
+  }
 });
 
 export default OrderListHome;

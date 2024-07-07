@@ -10,9 +10,10 @@ import {SafeAreaView, StyleSheet} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {NavigationState} from '@react-navigation/core';
+import {RecoilRoot} from 'recoil';
 
-import {navigationRef} from './App/helper/navigation/index';
-import AppSplashScreen from './App/screens/Splash/index';
+import {navigationRef} from './App/helper/navigation';
+import AppSplashScreen from './App/screens/Splash';
 import RootNavigator from './App/navigation/RootNavigator';
 
 function App(): JSX.Element {
@@ -29,11 +30,13 @@ function App(): JSX.Element {
     return <AppSplashScreen />;
   }
 
-  //@ts-ignore
+  // Gets the current screen from navigation state
+  // @ts-ignore
   const getActiveRoute = (state: NavigationState) => {
     const route = state.routes[state.index];
 
     if (route.state) {
+      // Dive into nested navigators
       return getActiveRoute(route.state as NavigationState);
     }
 
@@ -41,22 +44,24 @@ function App(): JSX.Element {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <NavigationContainer
-        ref={navigationRef}
-        onReady={() => {
-          routeNameRef.current =
-            navigationRef?.current?.getCurrentRoute()?.name;
-        }}
-        onStateChange={state => {
-          const {name: currentRouteName} = getActiveRoute(
-            state as NavigationState,
-          );
-          routeNameRef.current = currentRouteName;
-        }}>
-        <RootNavigator />
-      </NavigationContainer>
-    </SafeAreaView>
+    <RecoilRoot>
+      <SafeAreaView style={styles.container}>
+        <NavigationContainer
+          ref={navigationRef}
+          onReady={() => {
+            routeNameRef.current =
+              navigationRef?.current?.getCurrentRoute()?.name;
+          }}
+          onStateChange={state => {
+            const {name: currentRouteName} = getActiveRoute(
+              state as NavigationState,
+            );
+            routeNameRef.current = currentRouteName;
+          }}>
+          <RootNavigator />
+        </NavigationContainer>
+      </SafeAreaView>
+    </RecoilRoot>
   );
 }
 

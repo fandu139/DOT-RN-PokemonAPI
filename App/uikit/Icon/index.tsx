@@ -18,14 +18,14 @@ interface Props {
 const ColectionIcon = createIconSetFromIcoMoon(iconConfig);
 
 const Icon: React.FC<Props> = ({
-  name,
+  name = '',
   size,
-  style,
-  color,
-  onPress,
-  disabled,
-  testID,
-  accessibilityLabel,
+  style = {},
+  color = '',
+  onPress = () => true,
+  disabled = false,
+  testID = 'button-icon',
+  accessibilityLabel = 'button-icon',
 }: Props) => {
   if (name) {
     return (
@@ -45,16 +45,6 @@ const Icon: React.FC<Props> = ({
     );
   }
   return null;
-};
-
-Icon.defaultProps = {
-  name: undefined,
-  color: undefined,
-  style: {},
-  disabled: false,
-  onPress: undefined,
-  testID: 'button-icon',
-  accessibilityLabel: undefined,
 };
 
 export default Icon;

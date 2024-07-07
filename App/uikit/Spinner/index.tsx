@@ -10,10 +10,10 @@ interface Props {
 }
 
 const Spinner: React.FC<Props> = ({
-  size,
-  color,
-  testID,
-  accessibilityLabel,
+  size = 'large',
+  color =  Colors.GREEN_47,
+  testID = 'loading-indicator',
+  accessibilityLabel =  'loading-indicator',
 }: Props) => (
   <ActivityIndicator
     testID={testID}
@@ -22,12 +22,5 @@ const Spinner: React.FC<Props> = ({
     color={color}
   />
 );
-
-Spinner.defaultProps = {
-  size: 'large',
-  color: Colors.GREEN_47,
-  testID: 'loading-indicator',
-  accessibilityLabel: undefined,
-};
 
 export default Spinner;

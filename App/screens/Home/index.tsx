@@ -12,6 +12,7 @@ import listDataFilter from '../../recoil/getDataFilter';
 import listData from '../../recoil/getData';
 import pageData from '../../recoil/getPage';
 
+import useComposeData from '../../hook/useComposeData';
 import getPokemonList from '../../fetchApi/getPokemonList';
 
 import Text from '../../uikit/Text';
@@ -36,17 +37,23 @@ const HomeScreen: React.FC<Props> = () => {
   const [searchByFilter, setSearchByFilter] = React.useState('');
   const [searchLoading, setSearchLoading] = React.useState(false);
 
+  const {composeData, temData} = useComposeData();
+
   useEffect(() => {
     const getDataPokemon = async () => {
       const dataResult = await getPokemonList({
         limit: page.limit,
         offset: page.offset,
       });
+      composeData(dataResult?.results);
     };
 
     getDataPokemon();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    setData(temData);
+  }, [temData]);
 
   const filtedData = async (textSearch: string) => {
     const result = data.filter(value =>

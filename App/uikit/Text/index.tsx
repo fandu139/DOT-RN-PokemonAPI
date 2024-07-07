@@ -1,4 +1,3 @@
-import StringUtils from '../../helper/string';
 import Colors from '../../theme/colors';
 import Fonts from '../../theme/fonts';
 import React from 'react';
@@ -135,12 +134,6 @@ const styles = StyleSheet.create({
     color: Colors.RED,
   },
 });
-
-Text.defaultProps = {
-  link: false,
-  style: {},
-  error: false,
-};
 
 Text.Bold = Bold;
 Text.Medium = Medium;
